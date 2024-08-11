@@ -161,7 +161,7 @@ class _CheckboxRadiobuttonState extends State<CheckboxRadiobutton> {
                     "sexo: $escolhaUsuario\n"
                     "cor: $escolhaCor");
             },
-            child: const Text("Salvar"),
+            child: const Text("Print"),
           ),
         ],
       ),
