@@ -9,6 +9,7 @@ class CheckboxRadiobutton extends StatefulWidget {
 
 class _CheckboxRadiobuttonState extends State<CheckboxRadiobutton> {
 
+  //variaveis cheeckbox
   bool? japonesa = false;
   bool? brasileira = false;
   bool? mexicana = false;
@@ -19,13 +20,19 @@ class _CheckboxRadiobuttonState extends State<CheckboxRadiobutton> {
   String? escolhaUsuario;
   String? escolhaCor;
 
+  //variaveis radiobutton
   bool corpoCorAzul = false;
   bool corpoCorVermelho = false;
+
 
   bool notificacao = false;
   bool notificacao2 = false;
 
   bool corponotificacao2 = false;
+
+  double corpoSlider = 0;
+  String labelSlider = "Valor selecionado";
+  int intSlider = 0;
 
 
   @override
@@ -186,6 +193,23 @@ class _CheckboxRadiobuttonState extends State<CheckboxRadiobutton> {
                 },
             ),
             const SizedBox(height: 25),
+            Slider(
+                value: corpoSlider,
+                min: 0,
+                max: 100,
+                label: labelSlider.toString(),
+                divisions: 20,
+                activeColor: Colors.lightGreen,
+                inactiveColor: Colors.amberAccent,
+                onChanged: (double novoValor){
+                  setState(() {
+                    corpoSlider = novoValor;
+                    intSlider = novoValor.toInt();
+                    labelSlider = intSlider.toString();
+                  });
+                },
+            ),
+            const SizedBox(height: 25),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.deepOrange[300]),
               onPressed: (){
@@ -195,7 +219,8 @@ class _CheckboxRadiobuttonState extends State<CheckboxRadiobutton> {
                       "sexo: $escolhaUsuario\n"
                       "cor: $escolhaCor\n"
                       "notificações: $notificacao\n"
-                      "notificações2: $notificacao2");
+                      "notificações2: $notificacao2\n"
+                      "slider: $intSlider  /  $labelSlider");
               },
               child: const Text(
                 "Print",
